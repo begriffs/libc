@@ -14,5 +14,6 @@
 	#define _VAL(x) #x
 
 	#define assert(test)     ((test) ? (void)0 \
-			: _Assert(__FILE__ ":" _STR(__LINE__) " " #test))
+		: _Assert("Assertion failed: " #test \
+			", file " __FILE__ ", line " _STR(__LINE__) "\n"))
 #endif
