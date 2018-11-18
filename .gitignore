@@ -1,0 +1,7 @@
+# ignore everything
+*
+
+# allow files with extensions
+!*.*
+# but ignore object files
+*.o
