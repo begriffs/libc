@@ -75,9 +75,34 @@ static const short toup_tab[257] = {EOF,
 0xf0, 0xf1, 0xf2, 0xf3, 0xf4, 0xf5, 0xf6, 0xf7, 
 0xf8, 0xf9, 0xfa, 0xfb, 0xfc, 0xfd, 0xfe, 0xff};
 
-/* sick hack with pointing into tables+1 */
+/* nice hack with pointing into tables+1 */
 const short *_Tolower = &tolow_tab[1];
 const short *_Toupper = &toup_tab[1];
+
+#define XDI (_DI|_XD)
+#define XLO (_LO|_XD)
+#define XUP (_UP|_XD)
+
+static const short ctyp_tab[257] = {0,
+_BB, _BB, _BB, _BB, _BB, _BB, _BB, _BB,
+_BB, _CN, _CN, _CN, _CN, _CN, _BB, _BB,
+_BB, _BB, _BB, _BB, _BB, _BB, _BB, _BB,
+_BB, _BB, _BB, _BB, _BB, _BB, _BB, _BB,
+_SP, _PU, _PU, _PU, _PU, _PU, _PU, _PU,
+_PU, _PU, _PU, _PU, _PU, _PU, _PU, _PU,
+XDI, XDI, XDI, XDI, XDI, XDI, XDI, XDI,
+XDI, XDI, _PU, _PU, _PU, _PU, _PU, _PU,
+_PU, XUP, XUP, XUP, XUP, XUP, XUP, _UP,
+_UP, _UP, _UP, _UP, _UP, _UP, _UP, _UP,
+_UP, _UP, _UP, _UP, _UP, _UP, _UP, _UP,
+_UP, _UP, _UP, _PU, _PU, _PU, _PU, _PU,
+_PU, XLO, XLO, XLO, XLO, XLO, XLO, _LO,
+_LO, _LO, _LO, _LO, _LO, _LO, _LO, _LO,
+_LO, _LO, _LO, _LO, _LO, _LO, _LO, _LO,
+_LO, _LO, _LO, _PU, _PU, _PU, _PU, _BB
+};
+
+const short *_Ctype = &ctyp_tab[1];
 
 /* function versions available if func ptr needed */
 
