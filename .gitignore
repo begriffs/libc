@@ -3,5 +3,6 @@
 
 # allow files with extensions
 !*.*
-# but ignore object files
+# but ignore build files
 *.o
+*.a

@@ -3,9 +3,14 @@ CFLAGS = -std=c89 -Wall -Wextra -Wpedantic -Wshadow
 .SUFFIXES :
 .SUFFIXES : .o .c .h
 
-# cannot use VPATH - http://austingroupbugs.net/view.php?id=766
+TESTS = tassert
+OBJS = assert.o ctype.o
 
 assert.o : assert.c assert.h
+ctype.o : ctype.c ctype.h
 
-tassert : tassert.c assert.o
-	$(CC) $(CFLAGS) -o $@ tassert.c assert.o $(LDFLAGS)
+libc.a : $(OBJS)
+	ar r $@ $?
+
+$(TESTS) : $$@.c libc.a
+	$(CC) $(CFLAGS) -o $@ $@.c libc.a $(LDFLAGS)
