@@ -6,8 +6,7 @@ CFLAGS = -std=c89 -Wall -Wextra -Wpedantic -Wshadow
 TESTS = tassert tctype terrno
 OBJS = assert.o ctype.o errno.o
 
-all :
-	ls t*.c | xargs -J % -L 1 basename % .c | xargs ${MAKE}
+all : $(TESTS)
 
 clean :
 	find . -maxdepth 1 -perm -111 -type f -exec rm {} +
