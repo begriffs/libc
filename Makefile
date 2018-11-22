@@ -3,8 +3,8 @@ CFLAGS = -std=c89 -Wall -Wextra -Wpedantic -Wshadow
 .SUFFIXES :
 .SUFFIXES : .o .c .h
 
-TESTS = tassert tctype
-OBJS = assert.o ctype.o
+TESTS = tassert tctype terrno
+OBJS = assert.o ctype.o errno.o
 
 all :
 	ls t*.c | xargs -J % -L 1 basename % .c | xargs ${MAKE}
@@ -15,6 +15,7 @@ clean :
 
 assert.o : assert.c assert.h
 ctype.o : ctype.c ctype.h
+errno.o : errno.c errno.h yvals.h
 
 libc.a : $(OBJS)
 	ar r $@ $?
