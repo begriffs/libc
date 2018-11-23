@@ -1,7 +1,7 @@
 #include "assert.h"
 #include "ctype.h"
+#include "limits.h"
 
-#include <limits.h>
 #include <stdio.h>
 
 static void prclass(const char *name, int (*fn)(int))

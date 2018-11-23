@@ -1,7 +1,7 @@
 #include "ctype.h"
+#include "limits.h"
 
 #include <stdio.h>
-#include <limits.h>
 
 #if EOF != -1 || UCHAR_MAX != 255
 #error WRONG TABLES IN CTYPE.H
