@@ -4,3 +4,5 @@
 
 #define _ARGPAD  0
 #define _ARGHOLE 0
+
+#define _NULL ((void*)0)
