@@ -4,7 +4,7 @@ CFLAGS = -std=c89 -Wall -Wextra -Wpedantic -Wshadow
 .SUFFIXES : .o .c .h
 
 TESTS = tassert tctype terrno tsetjmp tsignal tstdarg
-OBJS = assert.o ctype.o errno.o
+OBJS = assert.o ctype.o errno.o stdio.o
 
 all : $(TESTS)
 
@@ -15,6 +15,8 @@ clean :
 assert.o : assert.c assert.h
 ctype.o : ctype.c ctype.h
 errno.o : errno.c errno.h yvals.h
+stdio.o : stdio.c stdio.h yvals.h xstdio.o
+xstdio.o : xstdio.c xstdio.h
 
 tstdarg : stdarg.h yvals.h
 

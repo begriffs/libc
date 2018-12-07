@@ -1,12 +1,13 @@
 #ifndef _STDIO_H
 #define _STDIO_H
 
+#include <stddef.h>
+#include <stdarg.h>
+
 #ifndef _YVALS_H
 #define _YVALS_H
 #include "yvals.h"
 #endif
-
-#define NULL _NULL
 
 #define _IOFBF 0
 #define _IOLBF 1
@@ -29,7 +30,7 @@
 
 #ifndef _SIZET
 #define _SIZET
-typedef _Sizet size_t;
+typedef size_t _Sizet;
 #endif
 
 typedef struct {
@@ -40,7 +41,7 @@ typedef struct {
 	unsigned short _Mode;
 	short _Handle;
 	unsigned char *_Buf, *_Bend, *_Next;
-	unsigned char _Back[2], CBuf, _Nback;
+	unsigned char _Back[2], _Cbuf, _Nback;
 	char *_Tmpnam;
 } FILE;
 
@@ -85,17 +86,17 @@ int sscanf(const char *, const char *, ...);
 FILE *tmpfile(void);
 char *tmpnam(char *);
 int ungetch(int, FILE *);
-int vfprintf(FILE *, const char *, char *);
-int vprintf(const char *, char *);
-int vsprintf(char *, const char *, char *);
+int vfprintf(FILE *, const char *, va_list);
+int vprintf(const char *, va_list);
+int vsprintf(char *, const char *, va_list);
 
 long _Fgpos(FILE *, fpos_t *);
-int _Fspos(FILE *, const fpos_T *, long, int);
+int _Fspos(FILE *, const fpos_t *, long, int);
 
 extern FILE *_Files[FOPEN_MAX];
 
 #define fgetpos(fp, ptr)     (int)_Fgpos(fp, ptr)
-#define ftell(fp_                 _Fgpos(fp, _NULL)
+#define ftell(fp)                 _Fgpos(fp, _NULL)
 #define fsetpos(fp, ptr)     _Fspos(fp, ptr, 0L, 0)
 #define fseek(fp, off, way)  _Fspos(fp, _NULL, off, way)
 
