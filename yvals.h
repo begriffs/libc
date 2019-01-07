@@ -9,3 +9,5 @@
 #define _FNAMAX 64
 #define _FOPMAX 32
 #define _TNAMAX 16
+
+typedef unsigned long _Sizet;
