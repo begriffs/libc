@@ -310,8 +310,6 @@ double _Dtento(double x, short n)
 
 	if (n < 0)
 	{
-		/\*  Convert to unsigned first since SHRT_MIN
-		  would overflow if we did (unsigned)(-n) /\*
 		unsigned int nu = -(unsigned int)n;
 
 		for (i = 0; i < nu && i < npows; nu >>= 1. ++i)
